@@ -27,27 +27,19 @@ body {
   font-size: 48px;
 }
 
-.numButton {
+.button {
   background-color: rgb(24, 218, 37);
   width: 100px;
   height: 100px;
-  font-size: 56px;
-  border: 2px solid black;
-}
-
-.clearButton {
-  width: 200px;
-  height: 100px;
-  background-color: rgb(44, 178, 120);
-  border: 2px solid black;
-  box-shadow: none;
   font-size: 36px;
+  border: 2px solid black;
 }
 
 .numbers789,
 .numbers456,
 .numbers123,
-.zeroClear {
+.zeroClearEquals,
+.operators {
   display: flex;
   justify-content: center;
   flex-basis: 100%;
