@@ -6,28 +6,40 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="calculator">
-      <div class="screen"><span class="screenText"> 42 </span></div>
+      <div class="screen"><span class="screenText"> 0 </span></div>
       <div class="numbers789">
-        <button class="numButton">7</button>
-        <button class="numButton">8</button>
-        <button class="numButton">9</button>
+        <button class="numButton" id="7">7</button>
+        <button class="numButton" id="8">8</button>
+        <button class="numButton" id="9">9</button>
       </div>
       <div class="numbers456">
-        <button class="numButton">4</button>
-        <button class="numButton">5</button>
-        <button class="numButton">6</button>
+        <button class="numButton" id="4">4</button>
+        <button class="numButton" id="5">5</button>
+        <button class="numButton" id="6">6</button>
       </div>
       <div class="numbers123">
-        <button class="numButton">1</button>
-        <button class="numButton">2</button>
-        <button class="numButton">3</button>
+        <button class="numButton" id="1">1</button>
+        <button class="numButton" id="2">2</button>
+        <button class="numButton" id="3">3</button>
       </div>
       <div class="zeroClear">
-        <button class="numButton">0</button>
-        <button class="clearButton">CLEAR</button>
+        <button class="numButton" id="0">0</button>
+        <button class="clearButton" id="clear">clear</button>
+      </div>
+      <div class="operators">
+        <button class="operatorButton" id="add">+</button>
+        <button class="operatorButton" id="subtract">-</button>
+        <button class="operatorButton" id="multiply">*</button>
+        <button class="operatorButton" id="divide">/</button>
       </div>
     </div>
   </body>
