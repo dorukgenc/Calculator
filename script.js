@@ -5,6 +5,7 @@ let firstNumber;
 let secondNumber;
 let firstNumberArray = [];
 let secondNumberArray = [];
+let isResultDisplayed = false;
 screenText.textContent = null;
 screenText2.textContent = null;
 
@@ -19,9 +20,22 @@ function subtract(num1, num2) {
 function multiply(num1, num2) {
   return num1 * num2;
 }
+//stackoverflow
+function isFloat(n) {
+  return n === +n && n !== (n | 0);
+}
+function isInteger(n) {
+  return n === +n && n === (n | 0);
+}
+//stackoverflow
 
 function divide(num1, num2) {
-  return num1 / num2;
+  let divided = num1 / num2;
+  if (isInteger(divided)) {
+    return divided;
+  } else {
+    return divided.toFixed(5);
+  }
 }
 
 function operate(num1, num2, operator) {
@@ -42,26 +56,28 @@ function clickHandler(event) {
 
   if (target.textContent === "=") {
     evaluate(screenText.textContent);
+    isResultDisplayed = true;
 
     screenText2.textContent =
       "Please press the 'Clear' button to start a new calculation.";
-  } else if (target.textContent === "clear") {
+  } else if (target.textContent === "Clear") {
     clear();
   } else if (
-    target.textContent === "0" ||
-    target.textContent === "1" ||
-    target.textContent === "2" ||
-    target.textContent === "3" ||
-    target.textContent === "4" ||
-    target.textContent === "5" ||
-    target.textContent === "6" ||
-    target.textContent === "7" ||
-    target.textContent === "8" ||
-    target.textContent === "9" ||
-    target.textContent === "+" ||
-    target.textContent === "-" ||
-    target.textContent === "*" ||
-    target.textContent === "/"
+    (target.textContent === "0" ||
+      target.textContent === "1" ||
+      target.textContent === "2" ||
+      target.textContent === "3" ||
+      target.textContent === "4" ||
+      target.textContent === "5" ||
+      target.textContent === "6" ||
+      target.textContent === "7" ||
+      target.textContent === "8" ||
+      target.textContent === "9" ||
+      target.textContent === "+" ||
+      target.textContent === "-" ||
+      target.textContent === "*" ||
+      target.textContent === "/") &&
+    !isResultDisplayed
   ) {
     screenText.textContent += target.textContent;
   }
@@ -98,4 +114,5 @@ function clear() {
   secondNumberArray = [];
   operator = null;
   screenText2.textContent = null;
+  isResultDisplayed = false;
 }

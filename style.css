@@ -28,7 +28,7 @@ body {
 }
 
 .screen2 {
-  background-color: lightgreen;
+  background-color: rgb(87, 183, 87);
   width: 300px;
   height: 30px;
   border: 1px solid;
@@ -44,6 +44,7 @@ body {
   height: 100px;
   font-size: 36px;
   border: 2px solid black;
+  font-weight: bold;
 }
 
 .numbers789,
