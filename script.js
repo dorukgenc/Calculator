@@ -1,3 +1,13 @@
+let screenText = document.querySelector(".screenText");
+let screenText2 = document.querySelector(".screenText2");
+let operator;
+let firstNumber;
+let secondNumber;
+let firstNumberArray = [];
+let secondNumberArray = [];
+screenText.textContent = null;
+screenText2.textContent = null;
+
 function add(num1, num2) {
   return num1 + num2;
 }
@@ -14,14 +24,6 @@ function divide(num1, num2) {
   return num1 / num2;
 }
 
-let firstNumber;
-let secondNumber;
-let operator;
-let firstNumberClicked = false;
-let operatorClicked = false;
-let secondNumberClicked = false;
-let screenText = document.querySelector(".screenText");
-
 function operate(num1, num2, operator) {
   switch (operator) {
     case "+":
@@ -37,9 +39,63 @@ function operate(num1, num2, operator) {
 
 function clickHandler(event) {
   let target = event.target;
-  let element = target.textContent;
 
-  if 
+  if (target.textContent === "=") {
+    evaluate(screenText.textContent);
+
+    screenText2.textContent =
+      "Please press the 'Clear' button to start a new calculation.";
+  } else if (target.textContent === "clear") {
+    clear();
+  } else if (
+    target.textContent === "0" ||
+    target.textContent === "1" ||
+    target.textContent === "2" ||
+    target.textContent === "3" ||
+    target.textContent === "4" ||
+    target.textContent === "5" ||
+    target.textContent === "6" ||
+    target.textContent === "7" ||
+    target.textContent === "8" ||
+    target.textContent === "9" ||
+    target.textContent === "+" ||
+    target.textContent === "-" ||
+    target.textContent === "*" ||
+    target.textContent === "/"
+  ) {
+    screenText.textContent += target.textContent;
+  }
 }
 
 document.addEventListener("click", clickHandler);
+
+function evaluate(str) {
+  let arr = str.split("");
+  operator = arr.filter((i) => isNaN(parseInt(i))).join("");
+  let hitOperator = false;
+  arr.forEach((element) => {
+    if (element === operator) {
+      hitOperator = true;
+      return;
+    }
+    if (!hitOperator) {
+      firstNumberArray.push(element);
+    } else if (hitOperator) {
+      secondNumberArray.push(element);
+    }
+
+    firstNumber = parseInt(firstNumberArray.join(""));
+    secondNumber = parseInt(secondNumberArray.join(""));
+  });
+
+  screenText.textContent = operate(firstNumber, secondNumber, operator);
+}
+function clear() {
+  screenText.textContent = null;
+  firstNumber = null;
+  secondNumber = null;
+  firstNumberArray = [];
+  secondNumberArray = [];
+  operator = null;
+  screenText2.textContent = null;
+}
